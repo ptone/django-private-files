@@ -20,9 +20,15 @@ class PrivateFieldFile(FieldFile):
     
     def _get_contidion(self):
         return self.field.condition
+
+    condition = property(_get_contidion) 
+   
+    def _get_attachment(self):
+        return self.field.attachment
     
-    condition = property(_get_contidion)
-        
+    attachment = property(_get_attachment)
+    
+
 
 def is_user_authenticated(request, instance):
     return (not request.user.is_anonymous()) and request.user.is_authenticated
@@ -30,11 +36,7 @@ def is_user_authenticated(request, instance):
 class PrivateFileField(FileField):
     attr_class = PrivateFieldFile
     
-    def __init__(self, verbose_name=None, name=None, upload_to='', storage=None, condition = is_user_authenticated,  **kwargs):
+    def __init__(self, verbose_name=None, name=None, upload_to='', storage=None, condition = is_user_authenticated, attachment = True, **kwargs):
         super(PrivateFileField, self).__init__(verbose_name, name, upload_to, storage, **kwargs)
-        self.protection_method = 'basic'
         self.condition = is_user_authenticated
-    
-
-class PrivateImageField(ImageField):
-    pass
+        self.attachment = attachment
