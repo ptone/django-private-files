@@ -14,6 +14,8 @@ from django.utils.http import http_date, parse_http_date
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 
+from private_files.signals import pre_download
+
 if not getattr(settings, 'FILE_PROTECTION_METHOD', False):
         raise ImproperlyConfigured('You need to set FILE_PROTECTION_METHOD in your project settings')
 
@@ -64,7 +66,8 @@ def _handle_xsendfile(request, instance, field_name):
     statobj = os.stat(field_file.path)
     response = HttpResponse()
     response['Content-Type'] = mimetype
-    response['Content-Disposition'] = 'attachment; filename="%s"' % basename
+    if field_file.attachment:
+        response['Content-Disposition'] = 'attachment; filename=%s'%basename
     response["X-Sendfile"] = field_file.path
     response['Content-Length'] = statobj.st_size
     return response
@@ -89,6 +92,7 @@ def get_file(request, app_label, model_name, field_name, object_id, filename):
     if not hasattr(instance, field_name):
         raise Http404("")
     if condition(request, instance):
+        pre_download.send(sender = model, instance = instance, field_name = field_name, request = request)
         return METHOD(request, instance, field_name)
     else:
         raise PermissionDenied()
