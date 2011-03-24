@@ -7,15 +7,6 @@
 django-private-files 0.1.0 documentation
 ================================================
 
-Contents:
-
-.. toctree::
-    :maxdepth: 2
-    
-    installation
-    usage
-    serverconf
-
 This application provides utilities for controlling access to static files based on
 conditions you can specify within your Django application.
 It provides a PrivatedFileField model field and appropriate signals for monitoring access to static content.
@@ -33,8 +24,20 @@ It supports the following methods for limiting access to files:
 
 
 It's currently been tested with Django 1.3, Apache, Nginx and Lighttpd. It should work with older versions of
-django except for the example project. Cherokee uses has the same mechanism as Apache mod_xsendfile and lighttpd, so
+django except for the example project. Cherokee has the same mechanism as Apache mod_xsendfile and lighttpd, so
 it should work, but it's not been tested or documented.
+
+
+Contents:
+
+.. toctree::
+    :maxdepth: 2
+    
+    installation
+    usage
+    serverconf
+
+
 
 
 
