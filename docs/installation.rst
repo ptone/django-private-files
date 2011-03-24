@@ -20,7 +20,7 @@ or if you want to hack on the code symlink to it in your site-packages:
 		python setup.py develop
 
 In your settings.py ``INSTALLED_APPS`` add ``private_files``.
-You must specify a protection method (basic, nginx or xsendfile) in your settings.py
+You must specify a protection method (``basic``, ``nginx`` or ``xsendfile``) in your settings.py
 
 .. code-block:: python
 

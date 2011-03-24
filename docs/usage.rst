@@ -18,7 +18,7 @@ By default it will check if the user is authenticated and let them download the
 file as an attachment.
 
 If you want to do more complex checks for the permission to download the file you
-need to pass your callable to the ``condition`` parameter::
+need to pass your own callable to the ``condition`` parameter::
 
 		from django.db import models
 		from django.contrib.auth.models import User
@@ -38,7 +38,7 @@ serve the file if it's true, otherwise it will throw ``PermissionDenied``.
 ``condition`` should return ``True`` if the ``request`` user should be able to download the file and ``False`` otherwise.
 
 Another optional parameter is ``attachment``. It allows you to control wether the ``content-disposition`` header is sent or not.
-By default it is ``True``, meaning the user will be prompted to download the file by the browser.
+By default it is ``True``, meaning the user will always be prompted to download the file by the browser.
 
 
 Monitoring Access to Static Files
