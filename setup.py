@@ -13,7 +13,7 @@ setup(
     description = 'Protected files in django',
     long_description = "A reusable django app that provides facilities for easy control over static file permissions.",
     url = 'https://bitbucket.org/vvangelovski/django-private-files',
-    download_url = 'https://bitbucket.org/vvangelovski/django-private-files/downloads',
+    download_url = 'https://bitbucket.org/vvangelovski/django-private-files/get/v0.1.0.tar.gz',
     include_package_data = True,
     
     classifiers=[
