@@ -38,8 +38,10 @@ setup(
 
 
     It's currently been tested with Django 1.3, Apache, Nginx and Lighttpd. It should work with older versions of
-    django except for the example project. Cherokee uses has the same mechanism as Apache mod_xsendfile and lighttpd, so
+    django except for the example project. Cherokee uses the same mechanism as Apache mod_xsendfile and lighttpd, so
     it should work, but it's not been tested or documented.
+
+    The full documentation for the project can be found on `Read the Docs <http://django-private-files.rtfd.org/>`_ .
     """,
 
     classifiers=[
